@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // initializing variables
 $username = "";
@@ -7,7 +6,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'john_admin', '123', 'timedb');
+$db = mysqli_connect('timedb', 'john_admin', '123', 'timedb');
 
 // add schedule
 if (isset($_POST['add_schedule'])) {
@@ -19,10 +18,6 @@ if (isset($_POST['add_schedule'])) {
 
   
 
-  // first check the database to make sure 
-  $user_check_query = "SELECT * FROM calendar WHERE Time='$Time' OR email='$AMPM' LIMIT 1";
-  $result = mysqli_query($db, $user_check_query);
-  $user = mysqli_fetch_assoc($result);
   
  
   // Finally, register user if there are no errors in the form
